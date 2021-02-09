@@ -22,3 +22,8 @@ def add_todo():
 def complete(oid):
     todo = todos.update_one({'_id': ObjectId(oid)}, {'$set':{'completed':True}})
     return redirect(url_for('index'))
+
+@app.route("/delete-completed")
+def deleteCompleted():
+    deleted = todos.delete_many({'completed':True})
+    return redirect(url_for('index'))
