@@ -27,3 +27,8 @@ def complete(oid):
 def deleteCompleted():
     deleted = todos.delete_many({'completed':True})
     return redirect(url_for('index'))
+
+@app.route("/delete-all")
+def deleteAll():
+    deleted = todos.delete_many({})
+    return redirect(url_for('index'))
