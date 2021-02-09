@@ -18,7 +18,9 @@
 
 <ul id="myUL">
     {% for todo in todos %}
-        <li>{{ todo.task }}</li>
+        <a href="{{ url_for('complete', oid=todo._id) }}">
+            <li class="{% if todo.completed %}checked{% endif %}">{{ todo.task }}</li>
+        </a>
     {% endfor %}
 </ul>
 
