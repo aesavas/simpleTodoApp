@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static',filename='style.css')}}">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{{ url_for('add_todo') }}" method="POST">
-        <div id="myDIV" class="header">
-            <h2 style="margin:5px">My To Do List</h2>
-            <input type="text" name="new-todo" id="myInput" placeholder="New todooo...">
-            <button type="submit" class="addBtn">ADD</button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static',filename='style.css')}}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico' )}}" type="image/x-icon">
+        <title>simplyDo</title>
+    </head>
+    <body>
+        <form action="{{ url_for('add_todo') }}" method="POST">
+            <div id="myDIV" class="header">
+                <h2 style="margin:5px">To Dooooo</h2>
+                <input type="text" name="new-todo" id="myInput" placeholder="New todooo...">
+                <button type="submit" class="addBtn">ADD</button>
+            </div>
+        </form>
+        <div class="header">
+            <a href="{{ url_for('deleteCompleted')}}" style="float:left;" class="deleteBtn">DELETE COMPLETED</a>
+            <a href="{{ url_for('deleteAll')}}" style="float:right;" class="deleteBtn">DELETE ALL</a>
         </div>
-    </form>
-    <div>
-        <a href="{{ url_for('deleteCompleted')}}" class="deleteBtn">DELETE COMPLETED</a>
-        <a href="{{ url_for('deleteAll')}}" class="deleteBtn">DELETE ALL</a>
-    </div>
 
-<br><br><br><br>
-<ul id="myUL">
-    {% for todo in todos %}
-        <a href="{{ url_for('complete', oid=todo._id) }}">
-            <li class="{% if todo.completed %}checked{% endif %}">{{ todo.task }}</li>
-        </a>
-    {% endfor %}
-</ul>
+        <br><br><br><br>
+        <ul id="myUL">
+            {% for todo in todos %}
+                <a href="{{ url_for('complete', oid=todo._id) }}" style="text-decoration:none; color:{% if todo.completed %}white{% else %}#141E30{% endif %};">
+                    <li class="{% if todo.completed %}checked{% endif %}">{{ todo.task }} <a href="{{ url_for('deleteSelected', oid=todo._id) }}" class="close" style="color:{% if todo.completed %}white{% else %}#141E30{% endif %};">X</a> </li>
+                </a>
+            {% endfor %}
+        </ul>
 
 
-</body>
+    </body>
 </html>

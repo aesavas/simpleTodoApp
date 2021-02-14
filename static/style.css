@@ -39,7 +39,7 @@ body {
   
   /* Darker background-color on hover */
   ul li:hover {
-    background: #ddd;
+    background: #DAF7A6;
   }
   
   /* When clicked on, add a background color and strike out text */
@@ -66,6 +66,7 @@ body {
   /* Style the close button */
   .close {
     position: absolute;
+    text-decoration: none;
     right: 0;
     top: 0;
     padding: 12px 16px 12px 16px;
@@ -121,8 +122,8 @@ body {
   }
 
   .deleteBtn{
-    padding: 8px;
-    width: 25%;
+    padding: 18px;
+    width: 50%;
     background: #FF5733;
     color: white;
     float: left;
@@ -130,6 +131,8 @@ body {
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
+    text-decoration: none;
+    border: 2px solid #DEBF0E
   }
 
   .deleteBtn:hover {

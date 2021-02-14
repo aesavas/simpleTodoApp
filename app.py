@@ -32,3 +32,8 @@ def deleteCompleted():
 def deleteAll():
     deleted = todos.delete_many({})
     return redirect(url_for('index'))
+
+@app.route("/delete/<oid>")
+def deleteSelected(oid):
+    deleted = todos.delete_one({'_id':ObjectId(oid)})
+    return redirect(url_for('index'))
